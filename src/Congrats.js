@@ -10,12 +10,10 @@ const Congrats = ({ success }) => {
         </span>
       </div>
     );
-  }
-  else {
+  } else {
     return <div data-test="component-congrats"></div>;
   }
 };
-
 
 Congrats.propTypes = {
   success: PropTypes.bool.isRequired,

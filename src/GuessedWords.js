@@ -7,12 +7,11 @@ const GuessedWords = ({ guessedWords }) => {
   if (!guessedWords.length) {
     contents = (
       <span data-test="guess-instructions">Try to guess the secret word!</span>
-    )
-  }
-  else {
+    );
+  } else {
     contents = (
       <div data-test="guessed-words">
-      <h3>Guessed Words</h3>
+        <h3>Guessed Words</h3>
         <table className="table table-sm">
           <thead className="thead-light">
             <tr>
@@ -21,20 +20,20 @@ const GuessedWords = ({ guessedWords }) => {
             </tr>
           </thead>
           <tbody>
-          {guessedWords.map((word, idx) => (
-          <tr key={idx} data-test="guessed-word">
-            <td>{word.guessedWord}</td>
-            <td>{word.letterMatchCount}</td>
-          </tr>
-          )) }
+            {guessedWords.map((word, idx) => (
+              <tr key={idx} data-test="guessed-word">
+                <td>{word.guessedWord}</td>
+                <td>{word.letterMatchCount}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
-    )
+    );
   }
 
-  return <div data-test="component-guessed-words">{contents}</div>
-}
+  return <div data-test="component-guessed-words">{contents}</div>;
+};
 
 GuessedWords.propTypes = {
   guessedWords: PropTypes.arrayOf(
