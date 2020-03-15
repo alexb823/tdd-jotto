@@ -2,7 +2,7 @@ import { getLetterMatchCount } from './';
 
 describe('getLetterMatchCount', () => {
   const secretWord = 'party';
-  test('returns correct count when there re no matching letters', () => {
+  test('returns correct count when there are no matching letters', () => {
     const lettersMatchCount = getLetterMatchCount('bones', secretWord);
     expect(lettersMatchCount).toBe(0);
   });
