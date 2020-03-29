@@ -5,9 +5,9 @@ export const actionTypes = {
   GUESS_WORD: 'GUESS_WORD',
 };
 
-// export const correctGuess = () => {
-//   return {type: actionTypes.CORRECT_GUESS};
-// };
+const correctGuess = () => {
+  return {type: actionTypes.CORRECT_GUESS};
+};
 
 export const guessWord = guessedWord => {
   return (dispatch, getState) => {
@@ -19,8 +19,6 @@ export const guessWord = guessedWord => {
       payload: { guessedWord, letterMatchCount },
     });
 
-    if (guessedWord === secretWord) {
-      dispatch({ type: actionTypes.CORRECT_GUESS });
-    }
+    if (guessedWord === secretWord) dispatch(correctGuess());
   };
 };
