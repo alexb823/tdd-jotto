@@ -1,15 +1,17 @@
 import { getLetterMatchCount } from '../utils';
+import axios from 'axios';
 
 export const actionTypes = {
   CORRECT_GUESS: 'CORRECT_GUESS',
   GUESS_WORD: 'GUESS_WORD',
+  SET_SECRET_WORD: 'SET_SECRET_WORD',
 };
 
 const correctGuess = () => {
-  return {type: actionTypes.CORRECT_GUESS};
+  return { type: actionTypes.CORRECT_GUESS };
 };
 
-export const guessWord = guessedWord => {
+export const guessWord = (guessedWord) => {
   return (dispatch, getState) => {
     const secretWord = getState().secretWord;
     const letterMatchCount = getLetterMatchCount(guessedWord, secretWord);
@@ -20,5 +22,16 @@ export const guessWord = guessedWord => {
     });
 
     if (guessedWord === secretWord) dispatch(correctGuess());
+  };
+};
+
+export const getSecretWord = () => {
+  return (dispatch) => {
+    return axios.get('http://localhost:3030').then((response) => {
+      dispatch({
+        type: actionTypes.SET_SECRET_WORD,
+        payload: response.data,
+      });
+    });
   };
 };
