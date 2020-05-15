@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { guessWord } from './actions';
 
 class Input extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const { success } = this.props;
+    const { success, guessWord } = this.props;
     return (
       <div data-test="component-input">
         {!success && (
@@ -32,4 +33,10 @@ const mapStateToProps = ({ success }) => {
   return { success };
 };
 
-export default connect(mapStateToProps)(Input);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    guessWord: () => dispatch(guessWord),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Input);
